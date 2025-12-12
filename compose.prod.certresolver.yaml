@@ -1,0 +1,6 @@
+---
+services:
+  app:
+    deploy:
+      labels:
+        - "traefik.http.routers.mysql.tls.certresolver=letsencrypt-${DNS_PROVIDER}"
