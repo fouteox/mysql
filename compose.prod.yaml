@@ -159,7 +159,7 @@ services:
       timeout: 5s
       retries: 3
     labels:
-      - docker-volume-backup.archive-pre=/bin/sh -c 'mysqldump -u $$MYSQL_USER -p$$MYSQL_PASSWORD --single-transaction $$MYSQL_DATABASE > /dumps/mysql.sql'
+      - docker-volume-backup.archive-pre=/bin/sh -c 'mysqldump -u $$MYSQL_USER -p$$MYSQL_PASSWORD --single-transaction --set-gtid-purged=OFF --no-tablespaces $$MYSQL_DATABASE > /dumps/mysql.sql'
       - docker-volume-backup.exec-label=mysql
     deploy:
       replicas: 1
